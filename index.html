@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="hu" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NORDIC NOEL — Karácsonyi Design Webshop</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Saját stíluslap -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Finom háttér havazás -->
+    <canvas id="snow-canvas"></canvas>
+
+    <!-- Sticky Navigáció + Visszaszámláló + Nordic szegély -->
+    <header class="sticky-top site-header">
+      <nav class="navbar navbar-expand-lg border-bottom border-custom py-3">
+        <div class="container">
+          <a class="navbar-brand logo" href="#">NORDIC NOEL</a>
+
+          <div class="d-flex align-items-center gap-3 order-lg-2">
+            <button
+              class="btn btn-outline-light rounded-pill px-3 py-1 d-flex align-items-center gap-2 cart-trigger"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#cartOffcanvas"
+              aria-controls="cartOffcanvas"
+            >
+              <span>Kosár</span>
+              <span id="cart-count" class="badge rounded-pill badge-gold"
+                >0</span
+              >
+            </button>
+            <button
+              class="navbar-toggler border-custom"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mainNav"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+
+          <div
+            class="collapse navbar-collapse justify-content-center order-lg-1"
+            id="mainNav"
+          >
+            <ul class="navbar-nav gap-lg-4 my-2 my-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#kollekcio">Kollekció</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#rolunk">Filozófiánk</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#kapcsolat">Kapcsolat</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Visszaszámláló sáv közvetlenül a menü alatt -->
+      <div class="countdown-bar py-2 border-bottom border-custom">
+        <div
+          class="container d-flex flex-wrap justify-content-center align-items-center gap-2 gap-md-3 small"
+        >
+          <span class="text-secondary-custom">Szentestéig hátralévő idő:</span>
+          <div
+            class="d-flex align-items-center gap-2 tabular-nums"
+            id="countdown-display"
+          >
+            <span><strong id="cd-days" class="text-gold">--</strong> nap</span>
+            <span class="text-muted">·</span>
+            <span><strong id="cd-hours" class="text-gold">--</strong> óra</span>
+            <span class="text-muted">·</span>
+            <span
+              ><strong id="cd-minutes" class="text-gold">--</strong> perc</span
+            >
+            <span class="text-muted">·</span>
+            <span
+              ><strong id="cd-seconds" class="text-gold">--</strong> mp</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Skandináv kötött mintás díszcsík -->
+      <div class="nordic-ribbon"></div>
+    </header>
+
+    <!-- Hero szekció -->
+    <section class="py-5 my-lg-4 hero-section">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <span
+              class="text-uppercase tracking-widest text-gold fw-semibold small d-block mb-3"
+            >
+              2026-OS ÜNNEPI KOLLEKCIÓ
+            </span>
+            <h1 class="display-4 serif-font fw-medium mb-4">
+              Minden, ami a karácsonyhoz kell, egy helyen!
+            </h1>
+            <p class="lead text-secondary-custom mb-4 fs-6">
+              Természetes anyagokból készült kézműves díszek, szójaviasz
+              gyertyák és időtálló kiegészítők a meghitt pillanatokhoz, valamint
+              ajándékok minden korosztálynak.
+            </p>
+            <a
+              href="#kollekcio"
+              class="btn btn-gold px-4 py-3 rounded-0 fw-semibold"
+            >
+              Kollekció felfedezése
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <div class="hero-img-box border border-custom">
+              <img
+                src="images/kari.jpeg"
+                class="img-fluid w-100 object-fit-cover"
+                alt="Minimalista karácsonyi dekoráció"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 Termékkártya (3x3-as Bootstrap Grid) -->
+    <main id="kollekcio" class="py-5 mb-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="serif-font h1 fw-medium mb-2">Kiemelt darabok</h2>
+          <p class="text-secondary-custom mb-0">
+            Válogatott kiegészítők a meghitt téli estékhez
+          </p>
+          <div class="nordic-divider"><span>✦ ❖ ✦</span></div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          <!-- 1 -->
+          <div class="col">
+            <div class="card h-100 product-card rounded-0">
+              <div class="card-img-wrap">
+                <img
+                  src="./images/bejgli.jfif"
+                  class="card-img-top rounded-0"
+                  alt="Bejgli"
+                />
+              </div>
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-medium mb-2">Bejgli</h3>
+                <p class="text-gold fw-medium mb-3">6 490 Ft/db</p>
+                <button
+                  type="button"
+                  class="btn btn-outline-gold rounded-0 mt-auto w-100"
+                  onclick="addToCart('prod-1', 'Bejgli', 6490, this)"
+                >
+                  Kosárba
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="col">
+            <div class="card h-100 product-card rounded-0">
+              <div class="card-img-wrap">
+                <img
+                  src="images/gta.webp"
+                  class="card-img-top rounded-0"
+                  alt="GTA VI"
+                />
+              </div>
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-medium mb-2">GTA VI</h3>
+                <p class="text-gold fw-medium mb-3">40 000 Ft</p>
+                <button
+                  type="button"
+                  class="btn btn-outline-gold rounded-0 mt-auto w-100"
+                  onclick="addToCart('prod-2', 'GTA VI', 40000, this)"
+                >
+                  Kosárba
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="col">
+            <div class="card h-100 product-card rounded-0">
+              <div class="card-img-wrap">
+                <img
+                  src="images/fuzer.jpg"
+                  class="card-img-top rounded-0"
+                  alt="Rézdrótos Mikro LED Füzér 10m"
+                />
+              </div>
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-medium mb-2">Rézdrótos Mikro LED Füzér 10m</h3>
+                <p class="text-gold fw-medium mb-3">5 490 Ft</p>
+                <button
+                  type="button"
+                  class="btn btn-outline-gold rounded-0 mt-auto w-100"
+                  onclick="
+                    addToCart(
+                      'prod-3',
+                      'Rézdrótos Mikro LED Füzér 10m',
+                      5490,
+                      this,
+                    )
+                  "
+                >
+                  Kosárba
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="col">
+            <div class="card h-100 product-card rounded-0">
+              <div class="card-img-wrap">
+                <img
+                  src="images/zokni.webp"
+                  class="card-img-top rounded-0"
+                  alt="Szarvasos Lenvászon Ajándékzokni"
+                />
+              </div>
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-medium mb-2">
+                  Szarvasos Lenvászon Ajándékzokni
+                </h3>
+                <p class="text-gold fw-medium mb-3">3 890 Ft</p>
+                <button
+                  type="button"
+                  class="btn btn-outline-gold rounded-0 mt-auto w-100"
+                  onclick="
+                    addToCart(
+                      'prod-4',
+                      'Szarvasos Lenvászon Ajándékzokni',
+                      3890,
+                      this,
+                    )
+                  "
+                >
+                  Kosárba
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="col">
+            <div class="card h-100 product-card rounded-0">
+              <div class="card-img-wrap">
+                <img
+                  src="images/halaszle.webp"
+                  class="card-img-top rounded-0"
+                  alt="Halászlé"
+                />
+              </div>
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-medium mb-2">Halászlé</h3>
+                <p class="text-gold fw-medium mb-3">3 290 Ft</p>
+                <button
+                  type="button"
+                  class="btn btn-outline-gold rounded-0 mt-auto w-100"
+                  onclick="addToCart('prod-5', 'Halászlé', 3290, this)"
+                >
+                  Kosárba
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div class="col">
+            <div class="card h-100 product-card rounded-0">
+              <div class="card-img-wrap">
+                <img
+                  src="images/csucs.avif"
+                  class="card-img-top rounded-0"
+                  alt="Karácsonyfa csúcsdísz"
+                />
+              </div>
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-medium mb-2">Karácsonyfa csúcsdísz</h3>
+                <p class="text-gold fw-medium mb-3">8 990 Ft</p>
+                <button
+                  type="button"
+                  class="btn btn-outline-gold rounded-0 mt-auto w-100"
+                  onclick="
+                    addToCart('prod-6', 'Karácsonyfa csúcsdísz', 8990, this)
+                  "
+                >
+                  Kosárba
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7 -->
+          <div class="col">
+            <div class="card h-100 product-card rounded-0">
+              <div class="card-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=600&q=80"
+                  class="card-img-top rounded-0"
+                  alt="Natúr Papír Csomagoló Szett"
+                />
+              </div>
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-medium mb-2">Natúr Papír Csomagoló Szett</h3>
+                <p class="text-gold fw-medium mb-3">2 990 Ft</p>
+                <button
+                  type="button"
+                  class="btn btn-outline-gold rounded-0 mt-auto w-100"
+                  onclick="
+                    addToCart(
+                      'prod-7',
+                      'Natúr Papír Csomagoló Szett',
+                      2990,
+                      this,
+                    )
+                  "
+                >
+                  Kosárba
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8 -->
+          <div class="col">
+            <div class="card h-100 product-card rounded-0">
+              <div class="card-img-wrap">
+                <img
+                  src="images/lindor.jpg"
+                  class="card-img-top rounded-0"
+                  alt="Lindor csokoládécsomag"
+                />
+              </div>
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-medium mb-2">Lindor csokoládécsomag</h3>
+                <p class="text-gold fw-medium mb-3">7 490 Ft</p>
+                <button
+                  type="button"
+                  class="btn btn-outline-gold rounded-0 mt-auto w-100"
+                  onclick="
+                    addToCart('prod-8', 'Lindor csokoládécsomag', 7490, this)
+                  "
+                >
+                  Kosárba
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9 -->
+          <div class="col">
+            <div class="card h-100 product-card rounded-0">
+              <div class="card-img-wrap">
+                <img
+                  src="images/bor.webp"
+                  class="card-img-top rounded-0"
+                  alt="Borválogatás"
+                />
+              </div>
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-medium mb-2">Borválogatás</h3>
+                <p class="text-gold fw-medium mb-3">14 990 Ft</p>
+                <button
+                  type="button"
+                  class="btn btn-outline-gold rounded-0 mt-auto w-100"
+                  onclick="addToCart('prod-9', 'Borválogatás', 14990, this)"
+                >
+                  Kosárba
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bootstrap Offcanvas Kosár -->
+    <div
+      class="offcanvas offcanvas-end cart-offcanvas border-start border-custom"
+      tabindex="-1"
+      id="cartOffcanvas"
+      aria-labelledby="cartOffcanvasLabel"
+    >
+      <div class="offcanvas-header border-bottom border-custom py-4 px-4">
+        <h5 class="offcanvas-title serif-font fs-4" id="cartOffcanvasLabel">
+          Kosár
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Bezárás"
+        ></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column p-4">
+        <ul
+          id="cart-items"
+          class="list-unstyled flex-grow-1 overflow-auto mb-3"
+        ></ul>
+        <div class="border-top border-custom pt-3">
+          <div
+            class="d-flex justify-content-between align-items-center mb-3 fs-5"
+          >
+            <span>Végösszeg</span>
+            <strong id="total-price" class="text-gold">0 Ft</strong>
+          </div>
+          <button
+            type="button"
+            id="checkout-btn"
+            class="btn btn-gold w-100 py-3 rounded-0 fw-semibold"
+          >
+            Megrendelés leadása
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lábléc -->
+    <footer
+      id="kapcsolat"
+      class="border-top border-custom py-4 text-center text-secondary-custom small"
+    >
+      <div class="container">NORDIC NOEL © 2026 — Minden jog fenntartva.</div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // --- 1. FINOM HAVAZÁS ---
+      function initSnowfall() {
+        const canvas = document.getElementById("snow-canvas");
+        const ctx = canvas.getContext("2d");
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        window.addEventListener("resize", () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const flakes = Array.from({ length: 75 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.6 + 1.2,
+          speedY: Math.random() * 0.8 + 0.35,
+          speedX: Math.random() * 0.4 - 0.2,
+          swing: Math.random() * Math.PI * 2,
+          opacity: Math.random() * 0.45 + 0.35,
+        }));
+
+        function drawSnow() {
+          ctx.clearRect(0, 0, width, height);
+          for (let f of flakes) {
+            f.swing += 0.015;
+            f.y += f.speedY;
+            f.x += f.speedX + Math.sin(f.swing) * 0.3;
+
+            if (f.y > height) {
+              f.y = -5;
+              f.x = Math.random() * width;
+            }
+            if (f.x > width) f.x = 0;
+            if (f.x < 0) f.x = width;
+
+            ctx.beginPath();
+            ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(242, 239, 233, ${f.opacity})`;
+            ctx.shadowColor = "rgba(255, 255, 255, 0.35)";
+            ctx.shadowBlur = 3;
+            ctx.fill();
+          }
+          requestAnimationFrame(drawSnow);
+        }
+        drawSnow();
+      }
+
+      // --- 2. VISSZASZÁMLÁLÓ ---
+      function startChristmasCountdown() {
+        const daysEl = document.getElementById("cd-days");
+        const hoursEl = document.getElementById("cd-hours");
+        const minutesEl = document.getElementById("cd-minutes");
+        const secondsEl = document.getElementById("cd-seconds");
+        const displayEl = document.getElementById("countdown-display");
+
+        function tick() {
+          const now = new Date();
+          const year = now.getFullYear();
+          let target = new Date(year, 11, 24, 0, 0, 0, 0);
+
+          if (
+            now.getMonth() === 11 &&
+            now.getDate() >= 24 &&
+            now.getDate() <= 26
+          ) {
+            displayEl.innerHTML =
+              '<strong class="text-gold">Boldog Karácsonyt kívánunk!</strong>';
+            return;
+          }
+
+          if (now.getTime() > target.getTime()) {
+            target = new Date(year + 1, 11, 24, 0, 0, 0, 0);
+          }
+
+          const totalSeconds = Math.max(
+            0,
+            Math.floor((target.getTime() - now.getTime()) / 1000),
+          );
+          daysEl.textContent = String(
+            Math.floor(totalSeconds / 86400),
+          ).padStart(2, "0");
+          hoursEl.textContent = String(
+            Math.floor((totalSeconds % 86400) / 3600),
+          ).padStart(2, "0");
+          minutesEl.textContent = String(
+            Math.floor((totalSeconds % 3600) / 60),
+          ).padStart(2, "0");
+          secondsEl.textContent = String(totalSeconds % 60).padStart(2, "0");
+        }
+        tick();
+        setInterval(tick, 1000);
+      }
+
+      // --- 3. KOSÁR LOGIKA (BOOTSTRAP OFFCANVAS) ---
+      let cart = JSON.parse(localStorage.getItem("nordic_cart")) || [];
+      const cartItemsEl = document.getElementById("cart-items");
+      const cartCountEl = document.getElementById("cart-count");
+      const totalPriceEl = document.getElementById("total-price");
+      const offcanvasEl = document.getElementById("cartOffcanvas");
+      const bsOffcanvas = new bootstrap.Offcanvas(offcanvasEl);
+
+      function addToCart(id, name, price, btnElement) {
+        const existing = cart.find((item) => item.id === id);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ id, name, price, qty: 1 });
+        }
+        saveAndRenderCart();
+
+        if (btnElement) {
+          const orig = btnElement.textContent;
+          btnElement.textContent = "Hozzáadva ✓";
+          btnElement.classList.add("added");
+          setTimeout(() => {
+            btnElement.textContent = orig;
+            btnElement.classList.remove("added");
+          }, 800);
+        }
+        bsOffcanvas.show();
+      }
+
+      function changeQty(id, delta) {
+        const item = cart.find((i) => i.id === id);
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) {
+          cart = cart.filter((i) => i.id !== id);
+        }
+        saveAndRenderCart();
+      }
+
+      function saveAndRenderCart() {
+        localStorage.setItem("nordic_cart", JSON.stringify(cart));
+        cartItemsEl.innerHTML = "";
+
+        let totalQty = 0;
+        let totalSum = 0;
+
+        if (cart.length === 0) {
+          cartItemsEl.innerHTML =
+            '<li class="text-secondary-custom py-3">A kosarad jelenleg üres.</li>';
+        } else {
+          cart.forEach((item) => {
+            totalQty += item.qty;
+            totalSum += item.price * item.qty;
+
+            const li = document.createElement("li");
+            li.className =
+              "d-flex justify-content-between align-items-center py-3 border-bottom border-custom gap-2";
+            li.innerHTML = `
+                        <div>
+                            <div class="fw-medium small">${item.name}</div>
+                            <div class="text-gold small">${(item.price * item.qty).toLocaleString("hu-HU")} Ft</div>
+                        </div>
+                        <div class="btn-group btn-group-sm border border-custom" role="group">
+                            <button type="button" class="btn btn-dark px-2" onclick="changeQty('${item.id}', -1)">−</button>
+                            <span class="px-2 d-flex align-items-center bg-dark text-light small">${item.qty}</span>
+                            <button type="button" class="btn btn-dark px-2" onclick="changeQty('${item.id}', 1)">+</button>
+                        </div>
+                    `;
+            cartItemsEl.appendChild(li);
+          });
+        }
+
+        cartCountEl.textContent = totalQty;
+        totalPriceEl.textContent = totalSum.toLocaleString("hu-HU") + " Ft";
+      }
+
+      document.getElementById("checkout-btn").addEventListener("click", () => {
+        if (cart.length === 0) {
+          alert("A kosarad üres, előbb válassz egy terméket!");
+          return;
+        }
+        alert("Köszönjük a rendelésed! Boldog ünnepeket kívánunk!");
+        cart = [];
+        saveAndRenderCart();
+        bsOffcanvas.hide();
+      });
+
+      initSnowfall();
+      startChristmasCountdown();
+      saveAndRenderCart();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,279 @@
+:root {
+    --bg-color: #13181f;
+    --surface-color: #1b222c;
+    --text-main: #f2efe9;
+    --text-muted: #98a2b0;
+    --accent-gold: #d4b483;
+    --accent-bar: #0d1117;
+    --border-color: #293240;
+}
+
+body {
+    background: radial-gradient(circle at top center, #1a222d 0%, var(--bg-color) 70%);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Finom, áttetsző Fair Isle / Nordic textúra a teljes háttéren */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4b483' stroke-width='1'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z'/%3E%3Cpath d='M15 15 L22 22 M45 15 L38 22 M45 45 L38 38 M15 45 L22 38'/%3E%3Crect x='28' y='2' width='4' height='4' transform='rotate(45 30 4)'/%3E%3Crect x='28' y='54' width='4' height='4' transform='rotate(45 30 56)'/%3E%3Crect x='2' y='28' width='4' height='4' transform='rotate(45 4 30)'/%3E%3Crect x='54' y='28' width='4' height='4' transform='rotate(45 56 30)'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Havazás */
+#snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1030;
+}
+
+/* Tipográfia & Segédosztályok */
+.serif-font {
+    font-family: 'Playfair Display', serif;
+}
+
+.text-gold {
+    color: var(--accent-gold) !important;
+}
+
+.text-secondary-custom {
+    color: var(--text-muted) !important;
+}
+
+.border-custom {
+    border-color: var(--border-color) !important;
+}
+
+.tracking-widest {
+    letter-spacing: 2.5px;
+}
+
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Fejléc és Navigáció */
+.site-header {
+    background-color: rgba(19, 24, 31, 0.92);
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: var(--text-main) !important;
+}
+
+.nav-link {
+    color: var(--text-muted) !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--accent-gold) !important;
+}
+
+.cart-trigger {
+    border-color: var(--border-color);
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+.cart-trigger:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-gold);
+    color: var(--text-main);
+}
+
+.badge-gold {
+    background-color: var(--accent-gold);
+    color: #13181f;
+}
+
+/* Visszaszámláló sáv */
+.countdown-bar {
+    background-color: var(--accent-bar);
+}
+
+/* Skandináv kötött mintás díszcsík a fejléc alján */
+.nordic-ribbon {
+    height: 14px;
+    width: 100%;
+    background-color: #0f141b;
+    border-bottom: 1px solid var(--border-color);
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='14' viewBox='0 0 32 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4b483' fill-opacity='0.55'%3E%3Crect x='15' y='2' width='2' height='2'/%3E%3Crect x='13' y='4' width='2' height='2'/%3E%3Crect x='17' y='4' width='2' height='2'/%3E%3Crect x='11' y='6' width='2' height='2'/%3E%3Crect x='15' y='6' width='2' height='2'/%3E%3Crect x='19' y='6' width='2' height='2'/%3E%3Crect x='13' y='8' width='2' height='2'/%3E%3Crect x='17' y='8' width='2' height='2'/%3E%3Crect x='15' y='10' width='2' height='2'/%3E%3Crect x='3' y='6' width='2' height='2' fill-opacity='0.3'/%3E%3Crect x='27' y='6' width='2' height='2' fill-opacity='0.3'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+/* Selburose (skandináv csillag) vízjel a Hero mögött */
+.hero-section {
+    position: relative;
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -120px;
+    transform: translateY(-50%);
+    width: 440px;
+    height: 440px;
+    pointer-events: none;
+    opacity: 0.06;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4b483' stroke-width='2'%3E%3Cpolygon points='100,10 118,75 185,55 130,100 185,145 118,125 100,190 82,125 15,145 70,100 15,55 82,75'/%3E%3Cpolygon points='100,35 112,82 158,68 122,100 158,132 112,118 100,165 88,118 42,132 78,100 42,68 88,82'/%3E%3Ccircle cx='100' cy='100' r='12'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-img-box {
+    position: relative;
+    padding: 10px;
+    background: var(--surface-color);
+}
+
+.hero-img-box img {
+    height: 450px;
+}
+
+/* Nordic szekció elválasztó */
+.nordic-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 14px auto 0;
+    max-width: 260px;
+}
+
+.nordic-divider::before,
+.nordic-divider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    opacity: 0.5;
+}
+
+.nordic-divider span {
+    color: var(--accent-gold);
+    font-size: 0.95rem;
+    letter-spacing: 4px;
+}
+
+/* Gombok */
+.btn-gold {
+    background-color: var(--accent-gold);
+    color: #13181f;
+    border: 1px solid var(--accent-gold);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-gold:hover {
+    background-color: var(--accent-gold);
+    color: #13181f;
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-outline-gold {
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.btn-outline-gold:hover,
+.btn-outline-gold.added {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: #13181f;
+    font-weight: 600;
+}
+
+/* Termékkártyák Nordic sarokdíszítéssel */
+.product-card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.product-card::before,
+.product-card::after {
+    content: "❖";
+    position: absolute;
+    font-size: 0.7rem;
+    color: var(--accent-gold);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.product-card::before {
+    top: 8px;
+    left: 10px;
+}
+
+.product-card::after {
+    top: 8px;
+    right: 10px;
+}
+
+.product-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-4px);
+}
+
+.product-card:hover::before,
+.product-card:hover::after {
+    opacity: 0.85;
+}
+
+.card-img-wrap {
+    overflow: hidden;
+    height: 280px;
+    background-color: #151b23;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    opacity: 0.92;
+}
+
+.product-card:hover .card-img-wrap img {
+    transform: scale(1.04);
+    opacity: 1;
+}
+
+/* Bootstrap Offcanvas kosár */
+.cart-offcanvas {
+    background-color: var(--surface-color);
+    color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+    .hero-img-box img {
+        height: 320px;
+    }
+}
